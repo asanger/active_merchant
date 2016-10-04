@@ -227,6 +227,17 @@ module ActiveMerchant #:nodoc:
             xml.BillingPhone address[:phone_number] if address[:phone_number]
           end
         end
+        if shipping_address = options[:shipping_address]
+          xml.address do
+            xml.ShippingAddress1 shipping_address[:address1] if shipping_address[:address1]
+            xml.ShippingAddress2 shipping_address[:address2] if shipping_address[:address2]
+            xml.ShippingCity shipping_address[:city] if shipping_address[:city]
+            xml.ShippingState shipping_address[:state] if shipping_address[:state]
+            xml.ShippingZipcode shipping_address[:zip] if shipping_address[:zip]
+            xml.ShippingEmail shipping_address[:email] if shipping_address[:email]
+            xml.ShippingPhone shipping_address[:phone_number] if shipping_address[:phone_number]
+          end
+        end
       end
 
       def parse(xml)
